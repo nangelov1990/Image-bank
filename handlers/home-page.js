@@ -5,7 +5,7 @@ module.exports = (req, res) => {
   req.pathname = req.pathname || url.parse(req.url).pathname
 
   if (req.pathname === '/' && req.method === 'GET') {
-    fs.readFile('./content/index.html', (err, data) => {
+    fs.readFile('./content/partials/index.html', (err, data) => {
       if (err) {
         console.error(err)
 
