@@ -1,5 +1,5 @@
-let fs = require('fs')
-let url = require('url')
+var fs = require('fs')
+var url = require('url')
 
 module.exports = (req, res) => {
   req.pathname = req.pathname || url.parse(req.url).pathname

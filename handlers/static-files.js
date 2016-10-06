@@ -1,8 +1,8 @@
-let fs = require('fs')
-let url = require('url')
+var fs = require('fs')
+var url = require('url')
 
 function getContentType (filepath) {
-  let contentType
+  var contentType
 
   if (filepath.endsWith('.css')) {
     contentType = 'text/css'
@@ -30,7 +30,7 @@ module.exports = (req, res) => {
     return true
   }
 
-  let filepath = '.' + req.pathname
+  var filepath = '.' + req.pathname
 
   fs.readFile(filepath, (err, data) => {
     if (err) {
@@ -43,7 +43,7 @@ module.exports = (req, res) => {
       return true // handler does not support request
     }
 
-    let contentType = getContentType(filepath)
+    var contentType = getContentType(filepath)
 
     if (!contentType) {
       console.error('Non-supported file format requested.')

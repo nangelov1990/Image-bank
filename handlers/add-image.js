@@ -1,20 +1,20 @@
-let url = require('url')
-let query = require('querystring')
+var url = require('url')
+var query = require('querystring')
 
-let images = {}
+var images = {}
 
 module.exports = (req, res) => {
   req.pathname = req.pathname || url.parse(req.url).pathname
 
   if (req.method === 'POST') {
-    let body = ''
+    var body = ''
 
     req.on('data', (data) => { body += data })
     req.on('end', () => {
-      let image = query.parse(body)
+      var image = query.parse(body)
 
-      let emptyName = image.name === '' || undefined
-      let emptyUrl = image.url === '' || undefined
+      var emptyName = image.name === '' || undefined
+      var emptyUrl = image.url === '' || undefined
 
       if (emptyName ||
           emptyUrl) {
@@ -28,7 +28,7 @@ module.exports = (req, res) => {
       console.log(image.name)
       console.log(image.url)
 
-      let counter = Object.keys(images).length
+      var counter = Object.keys(images).length
       images[counter] = image
       console.log(images)
 

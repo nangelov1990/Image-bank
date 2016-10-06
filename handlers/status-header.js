@@ -1,4 +1,4 @@
-let fs = require('fs')
+var fs = require('fs')
 
 module.exports = (req, res) => {
   if (req.headers['status-header'] === 'Full') {
@@ -9,12 +9,12 @@ module.exports = (req, res) => {
         return
       }
 
-      let pageTop = data.split('#')[0]
-      let pageBottom = data.split('#')[1]
-      let images = require('./add-image').images
-      let imagesCount = Object.keys(images).length
+      var pageTop = data.split('#')[0]
+      var pageBottom = data.split('#')[1]
+      var images = require('./add-image').images
+      var imagesCount = Object.keys(images).length
 
-      let html = pageTop +
+      var html = pageTop +
         imagesCount +
         pageBottom
 
