@@ -2,7 +2,6 @@ var http = require('http')
 
 var handlers = require('./handlers/index')
 var port = process.env.PORT || 2993
-var environment = process.evn.NODE_ENV
 
 http
   .createServer((req, res) => {
