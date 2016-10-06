@@ -1,5 +1,5 @@
 var url = require('url')
-let fs = require('fs')
+var fs = require('fs')
 
 module.exports = (req, res) => {
   req.pathname = req.pathname || url.parse(req.url).pathname
@@ -7,8 +7,6 @@ module.exports = (req, res) => {
   if (req.pathname.startsWith('/images/')) {
     var images = require('./add-image').images
 
-    
-  
     fs.readFile('./content/partials/images.html', 'utf8', (err, data) => {
       if (err) {
         console.error(err)
@@ -21,7 +19,7 @@ module.exports = (req, res) => {
 
       if (!images) {
         var errorMessage = `<h3>No images yet.</h3>`
-        html= pageTop + errorMessage + pageBottom
+        html = pageTop + errorMessage + pageBottom
 
         res.writeHead(200, {
           'Content-Length': html.length,
@@ -45,7 +43,7 @@ module.exports = (req, res) => {
 
         listOfImages += `  </ul>`
 
-        html= pageTop +
+        html = pageTop +
           listOfImages +
           pageBottom
 
@@ -67,7 +65,7 @@ module.exports = (req, res) => {
         <span>Name: <a href="${currentImage.url}">${currentImage.name}</a></span><br />    
         <img src="${currentImage.url}" alt="${currentImage.name}">`
 
-          html= pageTop +
+          html = pageTop +
             imageView +
             pageBottom
 
@@ -81,7 +79,7 @@ module.exports = (req, res) => {
           res.end()
         } else {
           var notFoundMessage = `<h3>ERROR: 404. IMAGE NOT FOUND</h3>`
-          html= pageTop +
+          html = pageTop +
             notFoundMessage +
             pageBottom
 
